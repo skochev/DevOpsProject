@@ -8,7 +8,7 @@ app = Flask(__name__)
 conn = pymysql.connect(host='127.0.0.1', port=3306, user='user', passwd='password', db=schema_name)
 # Getting a cursor from Database
 cursor = conn.cursor()
-
+#testing
 
 # accessed via <HOST>:<PORT>/get username
 @app.route("/get_user_name/<int:user_id>")
