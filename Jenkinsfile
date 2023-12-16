@@ -12,7 +12,7 @@ pipeline {
         stage('run python') {
             steps {
                 script {
-                    sh 'python3 1.py'
+                    sh 'web_app.py'
                 }
             }
         }
