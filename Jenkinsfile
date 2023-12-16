@@ -29,7 +29,7 @@ pipeline {
                 bat 'start/min Testing/frontend_testing.py'
             }
         }
-        stage('run frontend testing') {
+        stage('run combined testing') {
             steps {
                 bat 'start/min Testing/combined_testing.py'
             }
