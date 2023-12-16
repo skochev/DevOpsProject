@@ -9,11 +9,9 @@ pipeline {
                 git 'https://github.com/skochev/DevOpsProject.git'
             }
         }
-        stage('run python') {
+        stage('run backend server') {
             steps {
-                script {
-                    sh 'web_app.py'
-                }
+                bat 'start/min web_app.py'
             }
         }
     }
