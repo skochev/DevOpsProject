@@ -1,5 +1,7 @@
 import pymysql
 from flask import Flask
+import os
+import signal
 
 schema_name = "projectdb"
 app = Flask(__name__)
@@ -32,6 +34,11 @@ def get_user(user_id):
         print(f"An unexpected error occurred: {e}")
         return "<H1 id='error'>" + 'no such user: ' + f"{user_id}" + "</H1>"
 
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server stopped'
 
 app.run(host='127.0.0.1', debug=True, port=5001)
 cursor.close()

@@ -1,6 +1,8 @@
 from flask import Flask, request
 import pymysql
 import datetime
+import os
+import signal
 
 schema_name = "projectdb"
 app = Flask(__name__)
@@ -79,6 +81,12 @@ def user(user_id):
             cursor.execute(f"DELETE FROM {schema_name}.users WHERE user_id = {user_id}")
 
             return {'status': 'ok', 'user_deleted': user_id}, 200  # status code
+
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server stopped'
 
 
 app.run(host='127.0.0.1', debug=True, port=5000)
